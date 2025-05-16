@@ -1,0 +1,98 @@
+---
+import Contacto from "../Contacto.astro";
+import Movilcon from "../Movilcon.astro";
+import Linkedincon from "../Linkedincon.astro";
+---
+<!--
+<div class="md:mx-20 mt-40">
+    <p class="text-center max-w-full mt-20 text-5xl tracking-tight font-extrabold text-white">
+        Contact
+    </p>
+
+    <div class="md:flex md:items-center md:justify-center border-8 border-bmoOscuro bg-bmo mt-4 mb-28 md:flex-col">
+        <section id="findme">
+            <Contacto />
+            
+            <div class="inline-flex gap-x-8">
+                <div class="flex items-center pr-8 md:pr-0 md:justify-center">
+                    <div class="pr-3">
+                        <Movilcon />
+                    </div>
+                    <p class="text-xl">+34643388799</p>
+                </div>
+
+
+                <div class="flex items-center md:justify-center">
+                    <div class="pr-3">
+                        <Linkedincon />
+                    </div>
+                    <p class="text-xl pt-4"></p>
+                </div>
+        </section>
+    </div>
+</div>-->
+
+<p class="text-center max-w-full mt-20 text-5xl tracking-tight font-extrabold text-white">
+        Contact ME
+    </p>
+
+<div class="w-full px-6 py-12 sm:px-12 lg:px-20">
+  <form
+    name="contact"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    class="bg-bmoOscuro border-8 border-bmo rounded-lg shadow-lg p-8 w-full max-w-3xl mx-auto"
+  >
+    <input type="hidden" name="form-name" value="contact" />
+    <p class="hidden">
+      <label>
+        Don’t fill this out: <input name="bot-field" />
+      </label>
+    </p>
+
+    <h2 class="text-3xl text-white font-semibold mb-6 text-center">Get in touch</h2>
+
+    <div class="mb-4">
+      <label class="block text-white text-lg mb-2" for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-white text-lg mb-2" for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    <div class="mb-6">
+      <label class="block text-white text-lg mb-2" for="message">Message</label>
+      <textarea
+        id="message"
+        name="message"
+        rows="5"
+        required
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      ></textarea>
+    </div>
+
+    <div class="text-center">
+      <button
+        type="submit"
+        class="bg-blue-500 hover:text-red-500 text-white font-semibold py-2 px-6 rounded-md transition-colors duration-300"
+      >
+        Send Message
+      </button>
+    </div>
+  </form>
+</div>

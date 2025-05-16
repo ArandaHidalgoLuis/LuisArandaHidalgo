@@ -1,0 +1,9 @@
+---
+// Iphone3D.astro
+---
+<canvas id="modeloCanvas" style="width: 100%; height: 100vh; display: block;"></canvas>
+
+<script type="module">
+  import { cargarModelo } from '../scripts/iphone.js';
+  cargarModelo('modeloCanvas', '/models/iphoneweb2.glb');
+</script>

@@ -1,0 +1,67 @@
+<!--// laptop.jsx
+import React, { useEffect } from 'react'
+import { useLoader } from '@react-three/fiber'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import * as THREE from 'three'
+
+export default function Laptop(props) {
+  const gltf = useLoader(GLTFLoader, '/models/Laptop_video.glb')
+
+  useEffect(() => {
+    const video = document.createElement('video')
+    video.src = '/videos/mitski.mp4'
+    video.crossOrigin = 'anonymous'
+    video.loop = true
+    video.muted = true
+    video.playsInline = true
+    video.autoplay = true
+    video.play()
+
+    const videoTexture = new THREE.VideoTexture(video)
+    videoTexture.flipY = false
+    videoTexture.encoding = THREE.sRGBEncoding
+
+    if (gltf?.scene) {
+      gltf.scene.traverse((child) => {
+        if (child.isMesh && child.material?.name === 'video') {
+          child.material.map = videoTexture
+          child.material.needsUpdate = true
+        }
+      })
+    }
+  }, [gltf])
+
+  return <primitive object={gltf.scene} {...props} />
+}
+
+ -->
+
+<!-- // src/components/LaptopCanvas.jsx
+import React, { Suspense } from 'react'
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls, Html, useProgress } from '@react-three/drei'
+import Laptop from './Laptop.jsx'
+
+function Loader() {
+  const { progress } = useProgress()
+  return <Html center>{progress.toFixed(0)}% loaded</Html>
+}
+
+export default function LaptopCanvas() {
+  return (
+    <Canvas camera={{ position: [0, 0, 5] }}>
+      {/* Fondo de color sólido */}
+      <color attach="background" args={['#000']} />
+
+      {/* Iluminación básica */}
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[5, 5, 5]} intensity={1} />
+
+      <Suspense fallback={<Loader />}>
+        <Laptop position={[0, -1, 0]} />
+        <OrbitControls />
+      </Suspense>
+    </Canvas>
+  )
+}
+ -->

@@ -10,13 +10,11 @@ export default function Phone(props) {
 
   useEffect(() => {
     if (gltf?.scene) {
-      // Centrar modelo en origen
       const box = new THREE.Box3().setFromObject(gltf.scene)
       const center = new THREE.Vector3()
       box.getCenter(center)
       gltf.scene.position.sub(center)
 
-      // Crear textura de video
       const video = document.createElement('video')
       video.src = '/videos/mitski.mp4'
       video.crossOrigin = 'anonymous'
@@ -31,7 +29,6 @@ export default function Phone(props) {
       videoTexture.flipY = false
       videoTexture.encoding = THREE.sRGBEncoding
 
-      // Reemplazar el material
       gltf.scene.traverse((child) => {
         if (child.isMesh && child.material?.name === 'screen.001') {
           child.material = new THREE.MeshBasicMaterial({ map: videoTexture })
@@ -40,10 +37,8 @@ export default function Phone(props) {
     }
   }, [gltf])
 
-  // Necesario si usas animaciones con video más adelante
   useFrame(() => {
     if (videoRef.current && videoRef.current.readyState >= 2) {
-      // El video está listo
     }
   })
 

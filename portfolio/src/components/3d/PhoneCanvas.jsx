@@ -13,7 +13,6 @@ export default function PhoneCanvas() {
     <Canvas camera={{ position: [0, 0, 2]}}>
     <color attach="background" args={['#000']} />
 
-      {/* Iluminación mejorada */}
       <ambientLight intensity={1.2} />
       <directionalLight position={[5, 10, 300]} intensity={1} />
       <hemisphereLight skyColor={0xffffff} groundColor={0x444444} intensity={1} />

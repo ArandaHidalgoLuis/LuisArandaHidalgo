@@ -5,7 +5,7 @@ import * as THREE from 'three'
 
 export default function Laptop(props) {
   const groupRef = useRef()
-  const gltf = useLoader(GLTFLoader, '/models/Laptop_video.glb')
+  const gltf = useLoader(GLTFLoader, '/models/3dLaptop.glb')
 
   useEffect(() => {
     const video = document.createElement('video')
@@ -28,14 +28,12 @@ export default function Laptop(props) {
       }
     })
 
-    // Centrado automático del modelo
     const box = new THREE.Box3().setFromObject(gltf.scene)
     const center = new THREE.Vector3()
     box.getCenter(center)
-    gltf.scene.position.sub(center) // centra el modelo en el origen
+    gltf.scene.position.sub(center) 
   }, [gltf])
 
-  // Rotación sobre eje Y
   useFrame(() => {
     if (groupRef.current) {
       groupRef.current.rotation.y += 0.005
